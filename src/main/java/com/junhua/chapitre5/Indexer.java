@@ -14,7 +14,11 @@ public class Indexer implements Runnable {
 	@Override
 	public void run() {
 		while(true){
-			
+			try {
+				System.out.println(queue.take().getName());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

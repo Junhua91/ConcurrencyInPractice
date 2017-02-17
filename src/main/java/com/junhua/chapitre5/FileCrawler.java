@@ -10,6 +10,14 @@ public class FileCrawler implements Runnable {
 	private FileFilter fileFilter;
 	private File root;
 	
+
+	
+	public FileCrawler(BlockingQueue<File> fileQueue, FileFilter fileFilter, File root) {
+		this.fileQueue = fileQueue;
+		this.fileFilter = fileFilter;
+		this.root = root;
+	}
+
 	@Override
 	public void run() {
 		try {

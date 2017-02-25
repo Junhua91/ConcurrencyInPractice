@@ -1,0 +1,28 @@
+package com.junhua.chapitre5.cache;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Memorier1<A,V> implements Computable<A, V>{
+
+	private final Map<A,V> cache = new HashMap<>();
+	private final Computable<A, V> c;
+	
+	
+	public Memorier1(Computable<A, V> c) {
+		this.c = c;
+	}
+
+	
+	public synchronized V compute(A arg) throws InterruptedException{
+		V result = cache.get(arg);
+		
+		if(result == null){
+			result = c.compute(arg);
+			cache.put(arg, result);
+		}
+		return result;
+	}
+	
+
+}

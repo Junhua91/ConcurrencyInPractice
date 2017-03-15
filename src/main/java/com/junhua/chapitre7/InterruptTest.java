@@ -1,5 +1,8 @@
 package com.junhua.chapitre7;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class InterruptTest {
 
 	public static void main(String[] args) {
@@ -64,5 +67,27 @@ public class InterruptTest {
 						Thread.currentThread().getName() + " (" + this.getState() + ") catch InterruptedException.");
 			}
 		}
+	}
+	
+	
+	static void test2(){
+		BlockingQueue<String> queue = new LinkedBlockingQueue<>();
+		boolean interrupted = false;
+		try{
+			while(true){
+				try {
+					queue.take();
+				} catch (InterruptedException e) {
+					interrupted = true;
+					System.out.println("InterruptedException");
+				}
+			}
+		}finally {
+			if(interrupted){
+				System.out.println("finally");
+				Thread.currentThread().interrupt();
+			}
+		}
+		
 	}
 }

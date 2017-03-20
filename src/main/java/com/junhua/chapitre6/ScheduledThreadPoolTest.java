@@ -11,6 +11,7 @@ public class ScheduledThreadPoolTest {
 	public static void main(String[] args) {
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
 		
+		
 //		executor.scheduleAtFixedRate(new Runnable() {
 //			
 //			@Override
@@ -18,6 +19,7 @@ public class ScheduledThreadPoolTest {
 //				System.out.println("The time is " + new Date());
 //			}
 //		}, 0, 1000L, TimeUnit.MILLISECONDS);
+		
 		
 		executor.scheduleWithFixedDelay(new Runnable() {
 			
@@ -27,5 +29,6 @@ public class ScheduledThreadPoolTest {
 
 			}
 		}, 0, 2000, TimeUnit.MILLISECONDS);
+		
 	}
 }
